@@ -1,6 +1,10 @@
 # 勤務管理システム
 
-Next.js + Prisma + PostgreSQLで構築されたシンプルな勤怠管理アプリケーションです。
+Next.js + Prisma + Supabase PostgreSQLで構築されたシンプルな勤怠管理アプリケーションです。
+
+## 🚀 本番環境URL
+
+**デプロイURL**: https://attendance-management-system.vercel.app
 
 ## 特徴
 
@@ -15,10 +19,11 @@ Next.js + Prisma + PostgreSQLで構築されたシンプルな勤怠管理アプ
 - **フロントエンド**: Next.js 15, React 18, TypeScript
 - **スタイリング**: Tailwind CSS
 - **バックエンド**: Next.js API Routes
-- **データベース**: PostgreSQL
+- **データベース**: Supabase PostgreSQL
 - **ORM**: Prisma
 - **認証**: JWT (jose)
 - **パスワードハッシュ化**: bcryptjs
+- **デプロイ**: Vercel
 
 ## 環境構築
 
@@ -161,31 +166,26 @@ npx prisma migrate reset
 
 ## デプロイ
 
-### Vercel + Neon（推奨）
+### Vercel + Supabase（採用済み）
 
-1. **Neonでデータベース作成**
-   - [Neon](https://neon.tech)でアカウント作成
+1. **Supabaseでデータベース作成**
+   - [Supabase](https://supabase.com)でアカウント作成
    - 新規PostgreSQLデータベース作成
-   - 接続文字列をコピー
+   - Connection Pooling URLをコピー
 
 2. **Vercelにデプロイ**
    - [Vercel](https://vercel.com)でプロジェクトをインポート
    - 環境変数を設定：
-     - `DATABASE_URL`: Neonの接続文字列
-     - `JWT_SECRET`: ランダムな長い文字列
+     - `DATABASE_URL`: Supabaseの接続文字列（URLエンコード済み）
+     - `JWT_SECRET`: 強力なランダム文字列
+     - `NODE_ENV`: `production`
 
 3. **マイグレーション実行**
    ```bash
-   # ローカルから本番DBに対してマイグレーション
-   DATABASE_URL="your-neon-connection-string" npx prisma migrate deploy
+   # SupabaseのSQL Editorで直接実行
+   # または
+   DATABASE_URL="your-supabase-connection-string" npx prisma migrate deploy
    ```
-
-### Railway（フルスタック）
-
-1. Railwayでプロジェクト作成
-2. PostgreSQLサービス追加
-3. Next.jsアプリをデプロイ
-4. 環境変数を自動設定
 
 ## トラブルシューティング
 
