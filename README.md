@@ -4,7 +4,7 @@ Next.js + Prisma + Supabase PostgreSQLで構築されたシンプルな勤怠管
 
 ## 🚀 本番環境URL
 
-**デプロイURL**: https://attendance-management-system.vercel.app
+**デプロイURL**: https://attendance-management-system-vf49.vercel.app/login
 
 ## 特徴
 
